@@ -23,13 +23,9 @@
       }
     ],
     "_active": true,
-    "_components": [
-      {
-        "__id__": 7
-      }
-    ],
+    "_components": [],
     "_prefab": {
-      "__id__": 9
+      "__id__": 7
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -182,37 +178,6 @@
     "nestedPrefabInstanceRoots": null
   },
   {
-    "__type__": "cc.CapsuleCharacterController",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "__prefab": {
-      "__id__": 8
-    },
-    "_group": 1,
-    "_minMoveDistance": 0.001,
-    "_stepOffset": 0.5,
-    "_slopeLimit": 45,
-    "_skinWidth": 0.01,
-    "_center": {
-      "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 1.4,
-      "z": 0
-    },
-    "_radius": 0.613,
-    "_height": 2.487,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.CompPrefabInfo",
-    "fileId": "3efWBjtilA04/qg7ytjEb1"
-  },
-  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
@@ -221,6 +186,7 @@
       "__id__": 0
     },
     "fileId": "8f2ZrdKpdehJLCv4SbSI+t",
+    "instance": null,
     "targetOverrides": null
   }
 ]
