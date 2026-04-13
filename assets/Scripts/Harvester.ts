@@ -1,6 +1,7 @@
-import { _decorator, Component, Node, Vec3 } from 'cc';
+import { _decorator, Component, Node, Vec3, animation } from 'cc';
 import { FieldGenerator } from './FieldGenerator'; 
 import { ResourceManager } from './ResourceManager'; 
+import { shakeNode } from './Helper';
 
 const { ccclass, property } = _decorator;
 
@@ -13,17 +14,27 @@ export class Harvester extends Component {
     @property(ResourceManager) 
     public resourceManager: ResourceManager = null!; 
 
+    @property(animation.AnimationController)
+    public animationController: animation.AnimationController = null!;
+
+    /**
+     * Pinpoint the center of the harvest radius. 
+     * Drag the Parent "Farmer" node here to ensure accuracy.
+     */
+    @property(Node)
+    public harvestCenter: Node = null!;
+
     @property
-    public baseHarvestRadius: number = 1.5; 
+    public baseHarvestRadius: number = 2.0; 
 
     @property
     public harvestCheckInterval: number = 0.1; 
 
     private timeSinceLastCheck: number = 0;
+    private isHarvesting: boolean = false;
 
     update(deltaTime: number) {
-        
-        if (!this.fieldGenerator || !this.resourceManager) return;
+        if (!this.fieldGenerator || !this.resourceManager || this.isHarvesting) return;
 
         this.timeSinceLastCheck += deltaTime;
         if (this.timeSinceLastCheck >= this.harvestCheckInterval) {
@@ -35,25 +46,51 @@ export class Harvester extends Component {
     checkForHarvest() {
         if (this.resourceManager.isFull()) return;
 
-        const harvestOrigin = this.node.worldPosition;
+        // harvestcenter 
+        const harvestOrigin = this.harvestCenter ? this.harvestCenter.worldPosition : this.node.worldPosition;
     
-        const potentialNodes = this.fieldGenerator.getNodesInVicinity(harvestOrigin); 
+        const potentialNodes = this.fieldGenerator.getNodesInVicinity(harvestOrigin);
         
-        for (let i = potentialNodes.length - 1; i >= 0; i--) {
+        let cropsInRange: Node[] = [];
+
+        for (let i = 0; i < potentialNodes.length; i++) {
             const wheatNode = potentialNodes[i];
             if (!wheatNode || !wheatNode.isValid) continue; 
 
             const dist = Vec3.distance(harvestOrigin, wheatNode.worldPosition);
 
             if (dist <= this.baseHarvestRadius) {
-                this.harvestNode(wheatNode);
+                cropsInRange.push(wheatNode);
             }
+        }
+
+        if (cropsInRange.length > 0) {
+            this.triggerHarvestSequence(cropsInRange);
         }
     }
 
+    private triggerHarvestSequence(nodes: Node[]) {
+        this.isHarvesting = true;
+        
+        // Trigger the animation
+        this.animationController.setValue("onHarvest", true);
+
+        nodes.forEach(node => {
+            this.harvestNode(node);
+        });
+
+        this.scheduleOnce(() => {
+            this.isHarvesting = false;
+        }, 0.6); 
+    }
+
     private harvestNode(node: Node) {
-        this.resourceManager.addWheat(1);
         this.fieldGenerator.removeNodeFromGrid(node);
-        node.destroy();
+        
+        shakeNode(node, 0.2, 0.05, 4, () => {
+            this.resourceManager.addWheat(1);
+            node.destroy();
+            console.log("another one bites the dust");
+        });
     }
 }

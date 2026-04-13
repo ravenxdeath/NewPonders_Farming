@@ -36,7 +36,7 @@
             "_value": false
           },
           "rich-text": {
-            "_value": true
+            "_value": false
           },
           "mask": {
             "_value": true
@@ -104,7 +104,7 @@
             "_value": true
           },
           "profiler": {
-            "_value": true
+            "_value": false
           },
           "occlusion-query": {
             "_value": false
@@ -122,10 +122,10 @@
             "_value": true
           },
           "video": {
-            "_value": true
+            "_value": false
           },
           "webview": {
-            "_value": true
+            "_value": false
           },
           "tween": {
             "_value": true
@@ -137,7 +137,7 @@
             "_value": false
           },
           "terrain": {
-            "_value": true
+            "_value": false
           },
           "light-probe": {
             "_value": true
@@ -149,7 +149,7 @@
             "_value": false
           },
           "spine": {
-            "_value": true,
+            "_value": false,
             "_option": "spine-3.8"
           },
           "spine-3.8": {
@@ -165,7 +165,7 @@
             }
           },
           "dragon-bones": {
-            "_value": true
+            "_value": false
           },
           "marionette": {
             "_value": true
@@ -190,9 +190,7 @@
             "_value": false
           }
         },
-        "flags": {
-          "LOAD_SPINE_MANUALLY": false
-        },
+        "flags": {},
         "includeModules": [
           "2d",
           "3d",
@@ -201,7 +199,6 @@
           "audio",
           "base",
           "custom-pipeline",
-          "dragon-bones",
           "gfx-webgl",
           "graphics",
           "intersection-2d",
@@ -214,17 +211,11 @@
           "physics-cannon",
           "primitive",
           "procedural-animation",
-          "profiler",
-          "rich-text",
           "skeletal-animation",
-          "spine-3.8",
-          "terrain",
           "tiled-map",
           "tween",
           "ui",
-          "ui-skew",
-          "video",
-          "webview"
+          "ui-skew"
         ],
         "noDeprecatedFeatures": {
           "value": false,

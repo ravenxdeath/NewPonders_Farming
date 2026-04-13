@@ -81,7 +81,7 @@
     {
       "alphaThreshold": 0.187,
       "mainTexture": {
-        "__uuid__": "1cf5a2a5-e640-404e-8bc9-ec4b49970469@6c48a",
+        "__uuid__": "57aebba7-6a8d-4fa0-82d0-56f24bafa2de@6c48a",
         "__expectedType__": "cc.Texture2D"
       }
     },

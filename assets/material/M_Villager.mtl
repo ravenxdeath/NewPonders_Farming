@@ -80,7 +80,7 @@
     {
       "roughness": 0.84,
       "mainTexture": {
-        "__uuid__": "64b8c46d-8b5f-4bf2-97af-c494bdd0d0d2@6c48a",
+        "__uuid__": "1d388696-0000-49ff-910f-13db441e7bc0@6c48a",
         "__expectedType__": "cc.Texture2D"
       },
       "pbrMap": {
