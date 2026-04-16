@@ -54,23 +54,23 @@ export class CharacterStateController extends Component {
     private m_characterStateContext : CharacterStateContext = new CharacterStateContext();
     private m_stateManager : StateManager<CharacterStateContext> = null!;
     private m_targetState : string = ""; 
-    
-    start() {
-        // FIX: Immediate initialization to prevent startup flash
-        this.AnimationController.setValue("idle", true);
-        this.AnimationController.setValue("walk", false);
-        this.AnimationController.setValue("onharvest", false);
+ 
+start() {
+    // 1. HARD RESET Animator to prevent "startup flash"
+    this.AnimationController.setValue("walk", false);
+    this.AnimationController.setValue("onharvest", false); // matches lowercase
+    this.AnimationController.setValue("idle", true);
 
-        this.m_characterStateContext.AnimationController = this.AnimationController;
-        this.m_stateManager = new StateManager<CharacterStateContext>(this.m_characterStateContext);
+    this.m_characterStateContext.AnimationController = this.AnimationController;
+    this.m_stateManager = new StateManager<CharacterStateContext>(this.m_characterStateContext);
 
-        this.m_stateManager.RegisterState(new IdleState());
-        this.m_stateManager.RegisterState(new WalkState());
-        this.m_stateManager.RegisterState(new HarvestState());
+    this.m_stateManager.RegisterState(new IdleState());
+    this.m_stateManager.RegisterState(new WalkState());
+    this.m_stateManager.RegisterState(new HarvestState());
 
-        this.m_targetState = CharacterState.IDLE;
-        this.m_stateManager.ChangeState(CharacterState.IDLE);
-    }
+    this.m_targetState = CharacterState.IDLE;
+    this.m_stateManager.ChangeState(CharacterState.IDLE);
+}
 
     update(deltaTime: number) {
         if(!this.m_stateManager || !this.CharacterControllerBehavior) return;
