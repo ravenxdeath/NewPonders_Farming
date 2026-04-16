@@ -12,13 +12,13 @@
     ],
     "_variables": {
       "idle": {
-        "__id__": 52
+        "__id__": 48
       },
       "walk": {
-        "__id__": 53
+        "__id__": 49
       },
       "onharvest": {
-        "__id__": 54
+        "__id__": 50
       }
     }
   },
@@ -80,10 +80,10 @@
         "__id__": 38
       },
       {
-        "__id__": 43
+        "__id__": 41
       },
       {
-        "__id__": 48
+        "__id__": 44
       }
     ],
     "_entryState": {
@@ -461,35 +461,19 @@
     "to": {
       "__id__": 10
     },
-    "conditions": [
-      {
-        "__id__": 39
-      }
-    ],
+    "conditions": [],
     "destinationStart": 0,
     "relativeDestinationStart": false,
     "startEventBinding": {
-      "__id__": 41
+      "__id__": 39
     },
     "endEventBinding": {
-      "__id__": 42
+      "__id__": 40
     },
     "duration": 0.3,
     "relativeDuration": false,
     "exitConditionEnabled": true,
     "_exitCondition": 1
-  },
-  {
-    "__type__": "cc.animation.UnaryCondition",
-    "operator": 0,
-    "operand": {
-      "__id__": 40
-    }
-  },
-  {
-    "__type__": "cc.animation.BindableBoolean",
-    "variable": "walk",
-    "value": false
   },
   {
     "__type__": "cc.animation.AnimationGraphEventBinding",
@@ -508,9 +492,40 @@
     "to": {
       "__id__": 6
     },
+    "conditions": [],
+    "destinationStart": 0,
+    "relativeDestinationStart": false,
+    "startEventBinding": {
+      "__id__": 42
+    },
+    "endEventBinding": {
+      "__id__": 43
+    },
+    "duration": 0.3,
+    "relativeDuration": false,
+    "exitConditionEnabled": true,
+    "_exitCondition": 1
+  },
+  {
+    "__type__": "cc.animation.AnimationGraphEventBinding",
+    "methodName": ""
+  },
+  {
+    "__type__": "cc.animation.AnimationGraphEventBinding",
+    "methodName": ""
+  },
+  {
+    "__type__": "cc.animation.AnimationTransition",
+    "__editorExtras__": null,
+    "from": {
+      "__id__": 6
+    },
+    "to": {
+      "__id__": 14
+    },
     "conditions": [
       {
-        "__id__": 44
+        "__id__": 45
       }
     ],
     "destinationStart": 0,
@@ -520,53 +535,6 @@
     },
     "endEventBinding": {
       "__id__": 47
-    },
-    "duration": 0.3,
-    "relativeDuration": false,
-    "exitConditionEnabled": true,
-    "_exitCondition": 1
-  },
-  {
-    "__type__": "cc.animation.UnaryCondition",
-    "operator": 0,
-    "operand": {
-      "__id__": 45
-    }
-  },
-  {
-    "__type__": "cc.animation.BindableBoolean",
-    "variable": "idle",
-    "value": false
-  },
-  {
-    "__type__": "cc.animation.AnimationGraphEventBinding",
-    "methodName": ""
-  },
-  {
-    "__type__": "cc.animation.AnimationGraphEventBinding",
-    "methodName": ""
-  },
-  {
-    "__type__": "cc.animation.AnimationTransition",
-    "__editorExtras__": null,
-    "from": {
-      "__id__": 6
-    },
-    "to": {
-      "__id__": 14
-    },
-    "conditions": [
-      {
-        "__id__": 49
-      }
-    ],
-    "destinationStart": 0,
-    "relativeDestinationStart": false,
-    "startEventBinding": {
-      "__id__": 50
-    },
-    "endEventBinding": {
-      "__id__": 51
     },
     "duration": 0.3,
     "relativeDuration": false,
