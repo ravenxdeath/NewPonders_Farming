@@ -38,7 +38,6 @@ class HarvestState implements State<CharacterStateContext> {
     name: string = CharacterState.HARVEST;
     preEnterDelayMs = 0; postEnterDelayMs = 0; preExitDelayMs = 0; postExitDelayMs = 0;
     OnEnter(context: CharacterStateContext) {
-        // The trigger "onHarvest" is fired by Harvester.ts
         context.AnimationController.setValue("idle", false);
         context.AnimationController.setValue("walk", false);
     }
@@ -57,6 +56,11 @@ export class CharacterStateController extends Component {
     private m_targetState : string = ""; 
     
     start() {
+        // FIX: Immediate initialization to prevent startup flash
+        this.AnimationController.setValue("idle", true);
+        this.AnimationController.setValue("walk", false);
+        this.AnimationController.setValue("onharvest", false);
+
         this.m_characterStateContext.AnimationController = this.AnimationController;
         this.m_stateManager = new StateManager<CharacterStateContext>(this.m_characterStateContext);
 
@@ -64,7 +68,6 @@ export class CharacterStateController extends Component {
         this.m_stateManager.RegisterState(new WalkState());
         this.m_stateManager.RegisterState(new HarvestState());
 
-        // FORCE START AT IDLE
         this.m_targetState = CharacterState.IDLE;
         this.m_stateManager.ChangeState(CharacterState.IDLE);
     }
@@ -75,8 +78,8 @@ export class CharacterStateController extends Component {
         const moveDir = this.CharacterControllerBehavior.m_moveDir;
         const isMoving = moveDir.lengthSqr() > 0.001;
         
-        // Check if the trigger was just activated
-        const isHarvestingTriggered = this.AnimationController.getValue("onHarvest") === true;
+        // FIX: Match lowercase "onharvest"
+        const isHarvestingTriggered = this.AnimationController.getValue("onharvest") === true;
 
         if (isMoving) {
             if (this.m_targetState !== CharacterState.WALK) {
@@ -87,8 +90,7 @@ export class CharacterStateController extends Component {
                 this.SetStateSafe(CharacterState.HARVEST);
             }
         } else {
-            // Only return to Idle if we aren't currently in the middle of a Harvest swing
-            // This allows "Has Exit Time" in the Graph to finish the animation
+            // Logic to stay in Harvest state until animation is done
             if (this.m_targetState !== CharacterState.IDLE && this.m_targetState !== CharacterState.HARVEST) {
                 this.SetStateSafe(CharacterState.IDLE);
             }

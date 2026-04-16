@@ -17,10 +17,6 @@ export class Harvester extends Component {
     @property(animation.AnimationController)
     public animationController: animation.AnimationController = null!;
 
-    /**
-     * Pinpoint the center of the harvest radius. 
-     * Drag the Parent "Farmer" node here to ensure accuracy.
-     */
     @property(Node)
     public harvestCenter: Node = null!;
 
@@ -46,19 +42,14 @@ export class Harvester extends Component {
     checkForHarvest() {
         if (this.resourceManager.isFull()) return;
 
-        // harvestcenter 
         const harvestOrigin = this.harvestCenter ? this.harvestCenter.worldPosition : this.node.worldPosition;
-    
         const potentialNodes = this.fieldGenerator.getNodesInVicinity(harvestOrigin);
-        
         let cropsInRange: Node[] = [];
 
         for (let i = 0; i < potentialNodes.length; i++) {
             const wheatNode = potentialNodes[i];
             if (!wheatNode || !wheatNode.isValid) continue; 
-
             const dist = Vec3.distance(harvestOrigin, wheatNode.worldPosition);
-
             if (dist <= this.baseHarvestRadius) {
                 cropsInRange.push(wheatNode);
             }
@@ -72,8 +63,8 @@ export class Harvester extends Component {
     private triggerHarvestSequence(nodes: Node[]) {
         this.isHarvesting = true;
         
-        // Trigger the animation
-        this.animationController.setValue("onHarvest", true);
+        // FIX: Match the lowercase "onharvest" trigger in your Cocos Graph
+        this.animationController.setValue("onharvest", true);
 
         nodes.forEach(node => {
             this.harvestNode(node);
@@ -86,11 +77,9 @@ export class Harvester extends Component {
 
     private harvestNode(node: Node) {
         this.fieldGenerator.removeNodeFromGrid(node);
-        
         shakeNode(node, 0.2, 0.05, 4, () => {
             this.resourceManager.addWheat(1);
             node.destroy();
-            console.log("another one bites the dust");
         });
     }
 }
