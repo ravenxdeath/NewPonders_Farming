@@ -5,7 +5,7 @@ const { ccclass, property } = _decorator;
 export class ResourceManager extends Component {
 
     @property(Label) public CropLabel: Label = null!; 
-    @property(Label) public CoinLabel: Label = null!; // Link your CoinsCount label here
+    @property(Label) public CoinLabel: Label = null!; 
     
     @property({ type: CCInteger }) public MaxCrops: number = 100; 
 
@@ -17,20 +17,23 @@ export class ResourceManager extends Component {
     }
 
     public addWheat(amount: number) {
-        // Keeping the method name 'addWheat' so Harvester.ts doesn't break
         this.cropCount = Math.min(this.cropCount + amount, this.MaxCrops);
         this.updateUI();
     }
 
     /**
-     * Converts held crops into coins (1:1 ratio)
+     * Sells a specific amount of crops and turns them into coins.
+     * Returns true if there are still crops left to sell.
      */
-    public sellCrops() {
-        if (this.cropCount <= 0) return;
+    public sellOneBatch(batchSize: number): boolean {
+        if (this.cropCount <= 0) return false;
 
-        this.coinCount += this.cropCount;
-        this.cropCount = 0;
+        const actualSold = Math.min(this.cropCount, batchSize);
+        this.cropCount -= actualSold;
+        this.coinCount += actualSold;
+        
         this.updateUI();
+        return this.cropCount > 0;
     }
 
     public isFull(): boolean {

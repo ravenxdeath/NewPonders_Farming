@@ -1,0 +1,143 @@
+{
+  "ver": "2.3.14",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e",
+  "files": [],
+  "subMetas": {
+    "e2349": {
+      "importer": "gltf-mesh",
+      "uuid": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@e2349",
+      "displayName": "",
+      "id": "e2349",
+      "name": "Mesh.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 12
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a040d": {
+      "importer": "gltf-embeded-image",
+      "uuid": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@a040d",
+      "displayName": "",
+      "id": "a040d",
+      "name": "Wheet Texture.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "e39f7": {
+      "importer": "texture",
+      "uuid": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@e39f7",
+      "displayName": "",
+      "id": "e39f7",
+      "name": "UnnamedTexture.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@a040d"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c33c2": {
+      "importer": "gltf-material",
+      "uuid": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@c33c2",
+      "displayName": "",
+      "id": "c33c2",
+      "name": "TextureSet-2.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2c083": {
+      "importer": "gltf-scene",
+      "uuid": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@2c083",
+      "displayName": "",
+      "id": "2c083",
+      "name": "cropPlane.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "Wheet Texture",
+        "uri": "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@a040d"
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@e2349"
+      ],
+      "skeletons": [],
+      "textures": [
+        "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@e39f7"
+      ],
+      "materials": [
+        "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@c33c2"
+      ],
+      "scenes": [
+        "94163d82-1a2e-407f-b74f-e1bc6a1dfe8e@2c083"
+      ]
+    }
+  }
+}

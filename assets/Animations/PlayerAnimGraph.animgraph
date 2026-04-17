@@ -187,7 +187,7 @@
     "motion": {
       "__id__": 11
     },
-    "speed": 1,
+    "speed": 1.15,
     "speedMultiplier": "",
     "speedMultiplierEnabled": false,
     "transitionInEventBinding": {
